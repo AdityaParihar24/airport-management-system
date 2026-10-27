@@ -248,9 +248,12 @@ def manage(kind):
     edit_id = request.args.get("edit", type=int)
     record = db.session.get(model, edit_id) if edit_id else None
 
-    return page(MANAGE, config=config, records=records,
-                kind=kind, record=record)
-
+   return page(MANAGE, config=config, records=records,
+            kind=kind, record=record,
+            title=config["title"],
+            fields=config["fields"],
+            choices=config["choices"],
+            error=None)
 
 FORM = """
 <div class="card">
